@@ -10,9 +10,9 @@ cultural stories behind them, deployed as Infrastructure as a Service on
 Microsoft Azure (Ubuntu 22.04, Apache HTTP Server).
 
 ## Documentation
-- [VM Setup](docs/01-vm-setup.md)
-- [Web Server Setup](docs/02-web-server-setup.md)
-- [DNS Setup](docs/03-dns-setup.md)
+- [VM Setup](171machine-vnet/default)
+- [Web Server Setup](http://20.89.16.246/#license)
+- [DNS Setup](https://desertz.ddns.net/#license)
 - [SSL/TLS Setup](docs/04-ssl-setup.md)
 - [Dynamic Script Feature](docs/05-dynamic-script.md)
 - [References](docs/06-references.md)

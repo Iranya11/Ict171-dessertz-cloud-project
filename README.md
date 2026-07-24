@@ -10,7 +10,7 @@
 
 This stage covers standing up the cloud hardware that Dessertz runs on.
 
-## 1. Create the VM
+## Stage 1. Create the VM
  Logged into the Azure Portal and searched for Virtual Machines.
  Clicked Create a Azure Virtual Machine and configured:
 
@@ -70,31 +70,20 @@ sudo apt update && sudo apt upgrade -y
 
 # Stage 2 — Installing and Configuring Apache
 
-**Author:** Iranya Dewmini · **Student ID:** 35900162
-
 With the VM provisioned and updated, this stage installs the web server and deploys the Dessertz site files.
 
 ## 1. Install Apache2
-
-```
 sudo apt install apache2 -y
-```
 
-📸 *Screenshot: Apache install confirmation*
-`<!-- insert screenshot here -->`
-
-## 2. Start and enable the service
-
-```
+. Start and enable the service
 sudo systemctl start apache2
 sudo systemctl enable apache2
 sudo systemctl status apache2
-```
-
 `start` launches Apache immediately, `enable` makes sure it comes back up automatically after a reboot, and `status` confirms it's active.
 
 📸 *Screenshot: `systemctl status apache2` showing active (running)*
-`<!-- insert screenshot here -->`
+`<img width="1122" height="507" alt="image" src="https://github.com/user-attachments/assets/302dc9da-db90-4454-85c7-c6420aaf589e" />
+
 
 ## 3. Confirm the server is publicly reachable
 

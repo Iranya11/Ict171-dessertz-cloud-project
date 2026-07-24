@@ -6,7 +6,7 @@
 
 **Live site:** https://desertz.ddns.net
 
-**Video explainer:** [link here once recorded]
+**Video explainer:** [https://drive.google.com/file/d/10LZhVpdUi3Pj2jmGauwzOPUTHc1rf2hP/view?usp=sharing]
 
 
 

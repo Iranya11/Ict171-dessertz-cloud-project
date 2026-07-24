@@ -4,7 +4,7 @@
 **Live site:** https://desertz.ddns.net
 **Video explainer:** [link here once recorded]
 
-# 1: Provisioning the Virtual Machine
+# 1: Deploying the Virtual Machine
 **Author:** Iranya Dewmini · **Student ID:** 35900162
 **Project:** Dessertz — ICT171 Cloud Server Project, 2026
 

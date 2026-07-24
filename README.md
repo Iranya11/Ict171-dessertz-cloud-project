@@ -90,7 +90,7 @@ sudo systemctl status apache2
 Loaded `http://20.89.16.246` in a browser (not just tested locally). The default **Apache2 Ubuntu Default Page** confirmed the server was serving traffic before any custom content was added.
 
 📸 *Screenshot: default Apache2 page loading at the public IP*
-`<!-- insert screenshot here -->`
+<img width="800" height="826" alt="image" src="https://github.com/user-attachments/assets/3fbc0622-fee0-4cc4-a0af-42910cc14fab" />
 
 ## 4. Deploy the Dessertz site files
 
@@ -103,9 +103,9 @@ sudo chown -R azureuser:azureuser /var/www/html
 From there, the Dessertz HTML/CSS files were transferred into `/var/www/html/` using `<!-- e.g. SFTP client such as FileZilla, or scp -->`, replacing the default `index.html`.
 
 📸 *Screenshot: Dessertz site loading in the browser at the public IP*
-`<!-- insert screenshot here -->`
+<img width="1575" height="875" alt="image" src="https://github.com/user-attachments/assets/f82eac53-4e3f-4ee6-a95d-3278f9ae70da" />
 
----
+
 
 **Previous:** [← VM Setup](01-vm-setup.md) · **Next:** [DNS Setup →](03-dns-setup.md)
 
@@ -123,18 +123,16 @@ A raw IP address isn't practical to remember or share, so the VM's public IP was
 4. Saved the hostname and waited for the DNS record to propagate.
 
 📸 *Screenshot: No-IP dashboard showing desertz.ddns.net pointed at the VM's IP*
-`<!-- insert screenshot here -->`
+<img width="1902" height="837" alt="image" src="https://github.com/user-attachments/assets/c0b8aabb-9580-40e4-831e-b042feab53c5" />
+
 
 ## 2. Confirm it resolves
 
 Once propagation completed, `desertz.ddns.net` loaded the exact same content as the raw IP address.
 
-```
-ping desertz.ddns.net
-```
-
 📸 *Screenshot: desertz.ddns.net loading the Dessertz site in a browser*
-`<!-- insert screenshot here -->`
+<img width="1911" height="947" alt="image" src="https://github.com/user-attachments/assets/c97db6fa-5bb8-4622-86a1-d2770f758ea7" />
+
 
 ## 3. Keeping the record current
 

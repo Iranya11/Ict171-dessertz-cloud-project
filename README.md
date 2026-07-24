@@ -136,3 +136,59 @@ Once propagation completed, `desertz.ddns.net` loaded the exact same content as 
 
 **Important:** in the Azure Portal, under the VM's network interface / public IP resource, check the **Assignment** setting. Azure public IPs default to **Dynamic**, meaning the IP can change if the VM is stopped and restarted — which would silently break the `desertz.ddns.net` A record above.
 .Since in my virtual machine it is static the domain will not break in the long run.
+
+## 🍰 Dessertz and how it functions
+
+Dessertz is built around three core pillars that bring global dessert culture together in one place:
+
+1. **Regional Explorer**: Lets visitors browse desserts by country or cultural region, surfacing the traditions and history behind each one.
+2. **Recipe Library**: A searchable collection of step-by-step guides for recreating traditional confections at home, filterable by ingredient or origin.
+3. **Cultural Stories**: Longer-form pieces exploring the history and meaning behind iconic desserts from around the world — the heritage and identity woven into each dish, not just the recipe.
+
+The current deployment establishes the foundation for these three features — a static site hosted on Azure IaaS, running Ubuntu 22.04 and Apache — with the Regional Explorer, Recipe Library, and Cultural Stories modules marked as planned and in active development.
+
+### Homepage view
+<img width="1851" height="822" alt="image" src="https://github.com/user-attachments/assets/06b83798-fddf-4b42-9bc6-0e471de52629" />
+
+
+## 📊 Platform Overview
+
+* **Regional Explorer**: Discover desserts by country or region — *Planned*.
+* **Recipe Library**: Step-by-step, searchable recreation guides — *Planned*.
+* **Cultural Stories**: Deep dives into dessert history and meaning — *Planned*.
+* **Infrastructure**: Azure IaaS, Ubuntu 22.04 LTS, Apache HTTP Server.
+
+![Platform capabilities section](<img width="1542" height="862" alt="image" src="https://github.com/user-attachments/assets/175f7361-a974-42d5-8b8e-e401c73159b7" />
+<img width="1565" height="746" alt="image" src="https://github.com/user-attachments/assets/a499c731-10b2-47ea-9839-1b588c5e5955" />
+<img width="1457" height="732" alt="image" src="https://github.com/user-attachments/assets/e778f0b3-a7ab-4935-9f62-6a21ffcbfbf2" />
+).
+
+
+## 🚧 Future of Dessertz
+
+Dessertz is currently a static foundation site, with its main features — Regional Explorer, Recipe Library, and Cultural Stories — still in planning. Upcoming work will focus on turning these from planned modules into working features, starting with a browsable regional dessert index and expanding into the recipe and story content from there.
+
+Beyond the technical build, Dessertz aims to make global food culture more discoverable — using dessert as a lens into heritage, community, and identity across different societies.
+
+---
+
+## 👥 Author & License
+
+* **Iranya Dewmini** (Student ID: `35900162`) — *ICT171 Student*
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+## 🚧 Planned Improvements
+
+The script currently covers `/var/www/html` only. Future additions could include:
+
+* Storing backups somewhere off the VM (e.g. Azure Blob Storage), so a copy survives even if the server is lost entirely.
+* Adding alerts (email or webhook) when a backup fails, instead of relying solely on the log.
+* Including Apache's configuration files in the backup, not just the website content.
+
+---
+
+## 👥 Author & License
+
+* **Iranya Dewmini** (Student ID: `35900162`) — *ICT171 Student*
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.

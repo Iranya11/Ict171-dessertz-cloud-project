@@ -186,7 +186,101 @@ Navigating to `https://desertz.ddns.net` shows the padlock icon in the browser a
 ```bash
 sudo certbot certificates
 ```
-Output confirmed the certificate is correctly issued and installed:
+Output confirmed the certificate is correctly issued and installed.
+
+# Stage 5 — Automated Site Backup Script
+
+To protect the Dessertz site content against accidental loss or server issues, a custom bash script was written to automatically back up `/var/www/html` on a schedule, with old backups cleaned up automatically to save disk space.
+
+## 1. What the script does
+
+1. **Snapshotting**: Compresses the entire contents of `/var/www/html` into a single timestamped `.tar.gz` archive.
+2. **Logging**: Records the outcome of every run — success or failure — with a timestamp to `/home/azureuser/backup.log`.
+3. **Cleanup**: Automatically deletes any backup archive older than 7 days, keeping the VM's storage from filling up over time.
+
+## 2. The script
+
+Created at `/usr/local/bin/backup-dessertz.sh`:
+
+```bash
+#!/bin/bash
+# Dessertz site backup script
+# Backs up /var/www/html and removes backups older than 7 days
+
+BACKUP_DIR="/home/azureuser/backups"
+SITE_DIR="/var/www/html"
+TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
+LOG_FILE="/home/azureuser/backup.log"
+mkdir -p "$BACKUP_DIR"
+tar -czf "$BACKUP_DIR/dessertz-backup-$TIMESTAMP.tar.gz" -C "$SITE_DIR" .
+if [ $? -eq 0 ]; then
+    echo "$(date): Backup succeeded -> dessertz-backup-$TIMESTAMP.tar.gz" >> "$LOG_FILE"
+else
+    echo "$(date): Backup FAILED" >> "$LOG_FILE"
+if
+find "$BACKUP_DIR" -name "*.tar.gz" -mtime +7 -delete
+```
+
+Made executable with:
+
+```bash
+sudo chmod +x /usr/local/bin/backup-dessertz.sh
+```
+
+## 3. Manual test run
+
+The script was first run manually to confirm it worked correctly before automating it:
+
+```bash
+sudo /usr/local/bin/backup-dessertz.sh
+ls -lh /home/azureuser/backups
+cat /home/azureuser/backup.log
+```
+
+Output confirmed a successful backup:
+total 36K
+-rw-r--r-- 1 root root 33K Jul 24 09:47 dessertz-backup-2026-07-24_09-47-52.tar.gz
+Fri Jul 24 09:47:52 UTC 2026: Backup succeeded -> dessertz-backup-2026-07-24_09-47-52.tar.gz
+
+
+ manual script run and log output
+`<img width="940" height="194" alt="image" src="https://github.com/user-attachments/assets/962dd235-58e8-4837-979b-f742f852c7b6" />`
+
+## 4. Scheduling with cron
+
+To run automatically without manual intervention, the script was scheduled via `crontab` to run daily at 2am:
+
+```bash
+crontab -e
+```
+
+Added:
+
+0 2 * * * /usr/local/bin/backup-dessertz.sh
+
+
+Confirmed the job was saved correctly:
+
+```bash
+crontab -l
+```
+
+`crontab -l` confirming the scheduled job*
+`<<img width="940" height="655" alt="image" src="https://github.com/user-attachments/assets/28a5512b-f8c6-46d0-8ca3-4f28c2eee181" />`
+
+## 5. Verifiable output
+
+Together, the log file (`/home/azureuser/backup.log`) and the growing set of timestamped archives in `/home/azureuser/backups` provide an ongoing, checkable record that the backup system is running as intended — both from a manual trigger and from the scheduled cron job.
+
+##  Planned Improvements
+
+The script currently covers `/var/www/html` only. Future additions could include:
+
+* Storing backups somewhere off the VM (e.g. Azure Blob Storage), so a copy survives even if the server is lost entirely.
+* Adding alerts (email or webhook) when a backup fails, instead of relying solely on the log.
+* Including Apache's configuration files in the backup, not just the website content.
+
+
 
 
 ## 🍰 Dessertz and how it functions

@@ -237,14 +237,10 @@ ls -lh /home/azureuser/backups
 cat /home/azureuser/backup.log
 ```
 
-Output confirmed a successful backup:
-total 36K
--rw-r--r-- 1 root root 33K Jul 24 09:47 dessertz-backup-2026-07-24_09-47-52.tar.gz
-Fri Jul 24 09:47:52 UTC 2026: Backup succeeded -> dessertz-backup-2026-07-24_09-47-52.tar.gz
-
+Output confirmed a successful
 
  manual script run and log output
-`<img width="940" height="194" alt="image" src="https://github.com/user-attachments/assets/962dd235-58e8-4837-979b-f742f852c7b6" />`
+<img width="940" height="194" alt="image" src="https://github.com/user-attachments/assets/962dd235-58e8-4837-979b-f742f852c7b6"/>
 
 ## 4. Scheduling with cron
 
@@ -266,7 +262,7 @@ crontab -l
 ```
 
 `crontab -l` confirming the scheduled job*
-`<<img width="940" height="655" alt="image" src="https://github.com/user-attachments/assets/28a5512b-f8c6-46d0-8ca3-4f28c2eee181" />`
+<img width="940" height="655" alt="image" src="https://github.com/user-attachments/assets/28a5512b-f8c6-46d0-8ca3-4f28c2eee181" />
 
 ## 5. Verifiable output
 

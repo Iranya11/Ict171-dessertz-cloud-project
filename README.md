@@ -107,8 +107,6 @@ From there, the Dessertz HTML/CSS files were transferred into `/var/www/html/` u
 
 
 
-**Previous:** [← VM Setup](01-vm-setup.md) · **Next:** [DNS Setup →](03-dns-setup.md)
-
 # Stage 3 — Setting Up Dynamic DNS
 
 **Author:** Iranya Dewmini · **Student ID:** 35900162

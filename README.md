@@ -99,8 +99,11 @@ Apache serves files from `/var/www/html/` by default, owned by `root`. Ownership
 ```
 sudo chown -R azureuser:azureuser /var/www/html
 ```
+From there, the Dessertz HTML/CSS files were transferred into `/var/www/html/` using `scp` from a Windows Terminal (PowerShell) session, replacing the default `index.html`.
 
-From there, the Dessertz HTML/CSS files were transferred into `/var/www/html/` using `<!-- e.g. SFTP client such as FileZilla, or scp -->`, replacing the default `index.html`.
+```bash
+scp -r ./dessertz-site/* azureuser@20.89.16.246:/var/www/html/
+```
 
 📸 *Screenshot: Dessertz site loading in the browser at the public IP*
 <img width="1575" height="875" alt="image" src="https://github.com/user-attachments/assets/f82eac53-4e3f-4ee6-a95d-3278f9ae70da" />

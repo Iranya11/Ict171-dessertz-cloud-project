@@ -179,7 +179,7 @@ The timer runs twice daily and has been active since the certificate was first i
 Navigating to `https://desertz.ddns.net` shows the padlock icon in the browser address bar, confirming the connection is encrypted end-to-end.
 
 📸 *Screenshot: padlock/certificate details on desertz.ddns.net*
-`<<img width="1545" height="845" alt="image" src="https://github.com/user-attachments/assets/e2d2dbfe-feb4-4ae6-8b74-e9334b5270e0" />>`
+<img width="1545" height="845" alt="image" src="https://github.com/user-attachments/assets/e2d2dbfe-feb4-4ae6-8b74-e9334b5270e0" />
 
 ## 4. Verify the certificate
 

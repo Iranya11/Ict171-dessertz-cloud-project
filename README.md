@@ -161,7 +161,7 @@ The current deployment establishes the foundation for these three features — a
 ![Platform capabilities section](<img width="1542" height="862" alt="image" src="https://github.com/user-attachments/assets/175f7361-a974-42d5-8b8e-e401c73159b7" />
 <img width="1565" height="746" alt="image" src="https://github.com/user-attachments/assets/a499c731-10b2-47ea-9839-1b588c5e5955" />
 <img width="1457" height="732" alt="image" src="https://github.com/user-attachments/assets/e778f0b3-a7ab-4935-9f62-6a21ffcbfbf2" />
-).
+)
 
 
 ## 🚧 Future of Dessertz

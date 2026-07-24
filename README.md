@@ -137,12 +137,4 @@ Once propagation completed, `desertz.ddns.net` loaded the exact same content as 
 ## 3. Keeping the record current
 
 **Important:** in the Azure Portal, under the VM's network interface / public IP resource, check the **Assignment** setting. Azure public IPs default to **Dynamic**, meaning the IP can change if the VM is stopped and restarted — which would silently break the `desertz.ddns.net` A record above.
-
-- If it's still **Dynamic**, change it to **Static** in the public IP resource's Configuration blade (`171machine-ip`) so `20.89.16.246` stays fixed for the rest of the project.
-- If it's already **Static**, note that here for the marker as confirmation the domain won't break mid-semester.
-
-`<!-- state which of the two applies once you've checked -->`
-
----
-
-**Previous:** [← Web Server Setup](02-web-server-setup.md) · **Next:** [SSL/TLS Setup →](04-ssl-setup.md)
+.Since in my virtual machine it is static the domain will not break in the long run.

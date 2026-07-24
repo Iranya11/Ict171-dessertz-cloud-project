@@ -108,8 +108,6 @@ scp -r ./dessertz-site/* azureuser@20.89.16.246:/var/www/html/
 📸 *Screenshot: Dessertz site loading in the browser at the public IP*
 <img width="1575" height="875" alt="image" src="https://github.com/user-attachments/assets/f82eac53-4e3f-4ee6-a95d-3278f9ae70da" />
 
-
-
 # Stage 3 — Setting Up Dynamic DNS
 
 **Author:** Iranya Dewmini · **Student ID:** 35900162
@@ -139,6 +137,57 @@ Once propagation completed, `desertz.ddns.net` loaded the exact same content as 
 
 **Important:** in the Azure Portal, under the VM's network interface / public IP resource, check the **Assignment** setting. Azure public IPs default to **Dynamic**, meaning the IP can change if the VM is stopped and restarted — which would silently break the `desertz.ddns.net` A record above.
 .Since in my virtual machine it is static the domain will not break in the long run.
+
+# Stage 4 — Securing the Server with HTTPS (SSL/TLS)
+
+With the domain resolving correctly, the next step was encrypting traffic between visitors and the server. A free SSL/TLS certificate was installed using **Let's Encrypt** via the **Certbot** utility, so the site could be served securely over HTTPS rather than plain HTTP.
+
+## 1. Confirm port 443 is open
+
+The HTTPS rule (port 443, TCP) was already added to the Network Security Group back in Stage 1, in preparation for this step.
+
+## 2. Install Certbot
+
+```bash
+sudo apt install certbot python3-certbot-apache -y
+```
+## 3. Generate and install the certificate
+
+```bash
+sudo certbot --apache -d desertz.ddns.net
+```
+Certbot prompted for an email address for renewal/security notices, agreement to the Let's Encrypt Terms of Service, and whether to redirect all HTTP traffic to HTTPS — the redirect option was selected so all traffic is automatically forced onto the secure connection.
+
+Certificate Name: desertz.ddns.net
+Serial Number: 5bb36451f93527ff6def9dacc21365345a5
+Key Type: RSA
+Domains: desertz.ddns.net
+Expiry Date: 2026-09-16 19:53:07+00:00 (VALID: 54 days)
+Certificate Path: /etc/letsencrypt/live/desertz.ddns.net/fullchain.pem
+Private Key Path: /etc/letsencrypt/live/desertz.ddns.net/privkey.pem
+
+## 5. Confirm auto-renewal is active
+
+Let's Encrypt certificates are valid for 90 days, so Certbot installs a systemd timer that checks for renewal automatically. This was confirmed active:
+```bash
+sudo systemctl status certbot.timer
+```
+The timer runs twice daily and has been active since the certificate was first installed (18 June 2026). The Certbot log (`/var/log/letsencrypt/letsencrypt.log`) shows repeated automatic renewal checks over the following weeks, each correctly reporting the certificate is "not yet due for renewal" — confirming the auto-renewal mechanism is working as expected ahead of the certificate's 16 September 2026 expiry.
+
+## 6. Verify the secure connection
+
+Navigating to `https://desertz.ddns.net` shows the padlock icon in the browser address bar, confirming the connection is encrypted end-to-end.
+
+📸 *Screenshot: padlock/certificate details on desertz.ddns.net*
+`<<img width="1545" height="845" alt="image" src="https://github.com/user-attachments/assets/e2d2dbfe-feb4-4ae6-8b74-e9334b5270e0" />>`
+
+## 4. Verify the certificate
+
+```bash
+sudo certbot certificates
+```
+Output confirmed the certificate is correctly issued and installed:
+
 
 ## 🍰 Dessertz and how it functions
 

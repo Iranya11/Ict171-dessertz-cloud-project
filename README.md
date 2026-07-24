@@ -66,8 +66,6 @@ sudo apt update && sudo apt upgrade -y
 📸 *Screenshot: successful SSH connection*
 <img width="1112" height="966" alt="image" src="https://github.com/user-attachments/assets/ab446a35-7fce-4b7d-90d7-6635c813d904" />
 
-**Next:** [Web Server Setup →](02-web-server-setup.md)
-
 ---
 
 # Stage 2 — Installing and Configuring Apache
@@ -117,8 +115,6 @@ scp -r ./dessertz-site/* azureuser@20.89.16.246:/var/www/html/
 📸 *Screenshot: Dessertz site loading in the browser at the public IP*
 <img width="1575" height="875" alt="image" src="https://github.com/user-attachments/assets/f82eac53-4e3f-4ee6-a95d-3278f9ae70da" />
 
-**Previous:** [← VM Setup](01-vm-setup.md) · **Next:** [DNS Setup →](03-dns-setup.md)
-
 ---
 
 # Stage 3 — Setting Up Dynamic DNS
@@ -145,8 +141,6 @@ Once propagation completed, `desertz.ddns.net` loaded the exact same content as 
 ## 3. Keeping the record current
 
 Azure public IPs default to **Dynamic**, meaning the IP can change if the VM is stopped and restarted — which would silently break the `desertz.ddns.net` A record above. This was checked in the public IP resource's Configuration blade (`171machine-ip`): the assignment is **Static**, so `20.89.16.246` stays fixed and the domain won't break for the rest of the project.
-
-**Previous:** [← Web Server Setup](02-web-server-setup.md) · **Next:** [SSL/TLS Setup →](04-ssl-setup.md)
 
 ---
 
@@ -206,8 +200,6 @@ Navigating to `https://desertz.ddns.net` shows the padlock icon in the browser a
 
 📸 *Screenshot: padlock/certificate details on desertz.ddns.net*
 <img width="1545" height="845" alt="image" src="https://github.com/user-attachments/assets/e2d2dbfe-feb4-4ae6-8b74-e9334b5270e0" />
-
-**Previous:** [← DNS Setup](03-dns-setup.md) · **Next:** [Custom Script →](05-script.md)
 
 ---
 
@@ -309,9 +301,6 @@ The script currently covers `/var/www/html` only. Future additions could include
 - Storing backups somewhere off the VM (e.g. Azure Blob Storage), so a copy survives even if the server is lost entirely.
 - Adding alerts (email or webhook) when a backup fails, instead of relying solely on the log.
 - Including Apache's configuration files in the backup, not just the website content.
-
-**Previous:** [← SSL/TLS Setup](04-ssl-setup.md)
-
 ---
 
 ## 🍰 Dessertz and How It Functions
